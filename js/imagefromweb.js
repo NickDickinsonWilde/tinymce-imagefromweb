@@ -60,12 +60,10 @@ $("#process").click(function () {
         var imgdata = "<p><img src='" + data + "' />" + credit_msg;
         if( $("#image").is(':empty')) {
             $("#image").append(imgdata);
-            //$("#arrow").show();
             return false;
         }
         $("#image").html("");
         $("#image").append(imgdata);
-        //$("#arrow").show();
         });
 
 });

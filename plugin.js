@@ -1,9 +1,9 @@
 var image_from_web_settings = {
     plugin_path: tinyMCE.baseURL + "/plugins/imagefromweb/", //really wish there was a default tinyMCE variable for that but there isn't
-    title      : "Insert Image from Web", 
+    title      : "Insert Image from Web", //title for all the menu items
     shortcut   : "", //the keyboard shortcut code, for example: "CTRL+ALT+I"
     debug      : false, 
-    upload_path: "/media/images/"
+    upload_path: "/media/images/", //the path to upload files to. (used by functions.php)
     credit_msg : "<p>Source: %link%.</p>", //the message to place after the image with an image credit - disable by setting to `false`. 
 };//default settings
 
@@ -15,8 +15,9 @@ tinymce.PluginManager.add('imagefromweb', function(editor) {
         }
 
     if (image_from_web_settings.debug) {
-        console.log(image_from_web_settings);
+        console.log(image_from_web_settings);//log the settings
         }
+
     function openmanager() {
         
         win = editor.windowManager.open({
