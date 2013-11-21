@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Insert Image From Web</title>
+
+		<link href="./css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap theme -->
+		<link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="./colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+		<link href="./css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<!--IE6-8 html5 support - because IE 6-8 still is around despite royally sucking-->
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+			</script>
+		<![endif]-->
+
+  </head>
+  <body>
+    <div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<form id="image_info" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="source_path">
+							Image Source:
+						</label>
+						<div class="col-xs-8">
+							<input id="source_path" class="form-control" type="url" placeholder="http://www.example.com/image.jpg" required autofocus>
+						</div>
+					</div>
+					<div class="form-group" title="Destination location/name to save the image as. specials: %date% : today's date, %src_name% : filename of the source image, %src_ext% : extension of the source image." >
+						<label class="col-xs-4 control-label" for="dest_path">
+							Destination Name:
+						</label>
+						<div class="col-xs-8">
+							<input id="dest_path" class="form-control" type="text" placeholder="%date%-%src_name%.%src_ext%">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-4 xs-push-4">
+							<button id="process" type="button" class="btn btn-lg btn-primary">Import Image</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="alert_placeholder">
+		</div>
+		<div id="image">
+		</div>
+
+	</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+    <script src="./js/parseuri.min.js"></script>
+	<script src="./js/imagefromweb.min.js"></script>
+  </body>
+</html>
