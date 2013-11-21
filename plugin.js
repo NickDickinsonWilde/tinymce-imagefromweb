@@ -4,6 +4,7 @@ var image_from_web_settings = {
     shortcut   : "", //the keyboard shortcut code, for example: "CTRL+ALT+I"
     debug      : false, 
     upload_path: "/media/images/"
+    credit_msg : "<p>Source: %link%.</p>", //the message to place after the image with an image credit - disable by setting to `false`. 
 };//default settings
 
 tinymce.PluginManager.add('imagefromweb', function(editor) {

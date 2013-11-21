@@ -25,11 +25,13 @@ function showalert(message, alerttype, linked) {
 }
 $("#process").click(function () {
     "use strict";
-    var today = new Date(),
-        src = $("#source_path").val(),
-        dest = $("#dest_path").val(),
-        file_info = parseUri(src).file.split("."),
-        funcs = parent.image_from_web_settings.plugin_path + "functions.php";
+    var today = new Date(), // today's date - used in the filename.
+        src = $("#source_path").val(), //path to the source image
+        dest = $("#dest_path").val(), //filename to save the image 
+        file_info = parseUri(src).file.split("."), //the original filename and extension
+        funcs = parent.image_from_web_settings.plugin_path + "functions.php", //path to functions.php (which does the heavylifting of copying images).
+        credit_link = $("#credit_link").val(), //
+        credit_msg = $("#credit_msg").val(); //
 
     if (src === "") {
         showalert('Please enter a url!', 'alert-danger', "#process");
@@ -38,12 +40,24 @@ $("#process").click(function () {
     if (dest === "") {
         dest = "%date%-%src_name%.%src_ext%";
         }
+    if (credit_link === "") {
+        credit_link = src;
+    }
+    if (credit_msg === "") {
+        credit_msg = parseUri(credit_link).host;
+    }
+    if (parent.image_from_web_settings.credit_show === false) {
+        credit_msg = "";
+    }
+    else {
+        credit_msg = parent.image_from_web_settings.credit_msg.replace('%link%', "<a href='" + credit_link +"' target='_blank'>" + credit_msg + "</a>");
+    }
     dest = parent.image_from_web_settings.upload_path + dest.replace(
         "%date%", today.toISOString().split("T")[0]).replace(      //replace date placeholder (if present) with today's date
         "%src_name%",file_info[0]).replace(           //replace name placeholder (if present) with source name
         "%src_ext%",file_info[1]).replace(/ /g, "-"); //replace extension placeholder (if present) with source's extension
     $.get(funcs, {task: "save_file", src: src, dest: dest, location: funcs}).done(function (data) {
-        var imgdata = "<img src='" + data + "' />";
+        var imgdata = "<p><img src='" + data + "' />" + credit_msg;
         if( $("#image").is(':empty')) {
             $("#image").append(imgdata);
             //$("#arrow").show();
