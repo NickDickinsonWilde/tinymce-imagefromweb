@@ -3,11 +3,11 @@ tinyMCE 4 Plugin: ImageFromWeb
 
 A plugin for tinyMCE 4.x
 
-### installation
+## installation
 
 Create folder `imagefromweb` in `tinymce/plugins/` and unzip all files to that folder
 
-Then add to your tinyMCE initialization script. For example:
+Then add it to your tinyMCE initialization script. For example:
 
 ```html
 <script type="text/javascript">
@@ -31,31 +31,32 @@ tinymce.init({
 ```
 
 Optional Settings:
+
     shortcut: STRING, the keyboard shortcut code, for example: "CTRL+ALT+I"
+
     debug: BOOL, if true may enable a couple of debug prints.
 
-### Demo
+## Demo
 
 Coming Soon!
 
-### Commercial use
+## Commercial use
 
 For <b>commercial use</b> you can buy an unlimited license for one product for $5 [CAD or USD].
 
-### Credits
+## Credits
 
 TinyMCE: Obviously this wouldn't exist without TinyMCE since it is a plugin for TinyMCE.
+
 Bootstrap: styling.
+
 JQuery: just made all my JavaScript so much easier to code.
 
-[http://blog.stevenlevithan.com/archives/parseuri]ParseURI
-: so I didn't have to muck with regexp to get the filename.
+[ParseURI](http://blog.stevenlevithan.com/archives/parseuri): so I didn't have to muck with regexp to get the filename.
 
 
 Special thanks to Ceasar Feijen/cfconsultancy for his QRCode plugin which I shredded up to learn the tinyMCE api.
 
-### Author
-**Nick Wilde/BriarMoon Design (pacificmorrowind)**
-design<at>briarmoon<dot>ca
-
-[http://www.briarmoon.ca/design/]http://www.briarmoon.ca/design/
+## Author
+**Nick Wilde/[BriarMoon Design](http://www.briarmoon.ca/design/) (pacificmorrowind)**
+design(at)briarmoon(dot)ca
