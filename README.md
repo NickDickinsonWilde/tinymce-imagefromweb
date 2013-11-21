@@ -32,9 +32,13 @@ tinymce.init({
 
 Optional Settings:
 
-    shortcut: STRING, the keyboard shortcut code, for example: "CTRL+ALT+I"
+    shortcut: STRING, [""],the keyboard shortcut code, for example: "CTRL+ALT+I"
 
-    debug: BOOL, if true may enable a couple of debug prints.
+    debug: BOOL, [false], if true may enable a couple of debug prints.
+    
+    credit_show: BOOL, [true]
+    
+    credit_msg : STRING, ["<p>Repost from: %link%.</p>"], credit message to put after the image (with %link% replaced by the actual link to the original). OR BOOL false to disable. 
 
 ## Demo
 
@@ -54,9 +58,24 @@ JQuery: just made all my JavaScript so much easier to code.
 
 [ParseURI](http://blog.stevenlevithan.com/archives/parseuri): so I didn't have to muck with regexp to get the filename.
 
+[JSCompress](http://jscompress.com/): quick and easy js minifier.
 
-Special thanks to Ceasar Feijen/cfconsultancy for his QRCode plugin which I shredded up to learn the tinyMCE api.
+
+Special thanks to Ceasar Feijen/cfconsultancy for his QRCode plugin which I shredded up to learn the tinyMCE api (and for that matter bootstrap... oh and my first JQuery code was an addition to his plugin).
 
 ## Author
 **Nick Wilde/[BriarMoon Design](http://www.briarmoon.ca/design/) (pacificmorrowind)**
 design(at)briarmoon(dot)ca
+
+##Changelog
+
+Version 1.0.0 (2013-11-21)
+
+*   Updated readme to be *much* better.
+*   Added option to automatically (or with user input) also provide a image credit line.
+*   Various tidyings and improvements.
+*   Fixed date output to use ISO standard.
+    
+Version 0.0.9-BETA (2013-11-20)
+
+*   First Beta. Everything *SHOULD* work.
