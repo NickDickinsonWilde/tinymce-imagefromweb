@@ -39,7 +39,7 @@ $("#process").click(function () {
         dest = "%date%-%src_name%.%src_ext%";
         }
     dest = parent.image_from_web_settings.upload_path + dest.replace(
-        "%date%", today.toDateString()).replace(      //replace date placeholder (if present) with today's date
+        "%date%", today.toISOString().split("T")[0]).replace(      //replace date placeholder (if present) with today's date
         "%src_name%",file_info[0]).replace(           //replace name placeholder (if present) with source name
         "%src_ext%",file_info[1]).replace(/ /g, "-"); //replace extension placeholder (if present) with source's extension
     $.get(funcs, {task: "save_file", src: src, dest: dest, location: funcs}).done(function (data) {
