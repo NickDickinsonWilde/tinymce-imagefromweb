@@ -2,7 +2,7 @@
 function save_file($dest,$src) {
     //Save remote file specified by $src to $dest.
     $ch = curl_init($src);
-    $fh = fopen("../../../../{$dest}", 'wb');  //TODO: properly set the dest path (ie not hardcoded)!
+    $fh = fopen("{$dest}", 'wb');
     curl_setopt($ch, CURLOPT_FILE, $fh);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_exec($ch);
