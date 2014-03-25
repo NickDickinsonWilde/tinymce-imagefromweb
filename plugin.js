@@ -3,7 +3,7 @@ var image_from_web_settings = {
     title      : "Insert Image from Web", //title for all the menu items
     shortcut   : "", //the keyboard shortcut code, for example: "CTRL+ALT+I"
     debug      : false, 
-    upload_path: "/media/images/", //the path to upload files to. (used by functions.php)
+    upload_path: "../../../../media/images/", //the path to upload files to. (used by functions.php)
     credit_msg : "<p>Source: %link%.</p>", //the message to place after the image with an image credit - disable by setting to `false`. 
 };//default settings
 

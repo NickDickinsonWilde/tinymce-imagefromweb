@@ -23,7 +23,7 @@ tinymce.init({
     toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
     toolbar2: "save autosave | responsivefilemanager | print preview media | forecolor backcolor emoticons | code | youtube | qrcode | image_from_web",
     image_from_web: {
-        upload_path: "/path to upload files to/"
+        upload_path: "/path to upload files to/", //relative to the plugin location. - if unset will default to "../../../../media/images/"
 		[other optional settings]		
 		},  
 	});
