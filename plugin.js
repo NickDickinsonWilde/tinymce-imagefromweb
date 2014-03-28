@@ -1,26 +1,32 @@
+/*jslint browser: true */
+/*jslint plusplus: true */
+/*global tinyMCE */
+/*global tinymce */
+/*global $ */
+/*jslint todo: true */
 var image_from_web_settings = {
     plugin_path: tinyMCE.baseURL + "/plugins/imagefromweb/", //really wish there was a default tinyMCE variable for that but there isn't
     title      : "Insert Image from Web", //title for all the menu items
     shortcut   : "", //the keyboard shortcut code, for example: "CTRL+ALT+I"
-    debug      : false, 
+    debug      : false,
     upload_path: "../../../../media/images/", //the path to upload files to. (used by functions.php)
-    credit_msg : "<p>Source: %link%.</p>", //the message to place after the image with an image credit - disable by setting to `false`. 
+    credit_msg : "<p>Source: %link%.</p>", //the message to place after the image with an image credit - disable by setting to `false`.
 };//default settings
 
-tinymce.PluginManager.add('imagefromweb', function(editor) {
+tinymce.PluginManager.add('imagefromweb', function (editor) {
     "use strict";
     if (editor.settings.image_from_web === "undefined") {
         //if plugin options are set in tinyMCE initialization merge them into settings.
         $.extend(true, image_from_web_settings, editor.settings.image_from_web);
-        }
+    }
 
     if (image_from_web_settings.debug) {
         console.log(image_from_web_settings);//log the settings
-        }
+    }
 
     function openmanager() {
-        
-        win = editor.windowManager.open({
+
+        editor.windowManager.open({
             title: image_from_web_settings.title,
             file: image_from_web_settings.plugin_path + "image_from_web.html",
             filetype: 'image',
@@ -29,7 +35,7 @@ tinymce.PluginManager.add('imagefromweb', function(editor) {
             inline: 1,
             buttons: [{
                 text: 'cancel',
-                onclick: function() {
+                onclick: function () {
                     this.parent()
                         .parent()
                         .close();
@@ -55,8 +61,8 @@ tinymce.PluginManager.add('imagefromweb', function(editor) {
         onclick: openmanager,
         context: 'insert'
     });
-    
+
     $('<link>')
-    .appendTo($('head'))
-    .attr({type : 'text/css', rel : 'stylesheet', href : image_from_web_settings.plugin_path + 'css/editor-style.css'});
+        .appendTo($('head'))
+        .attr({type : 'text/css', rel : 'stylesheet', href : image_from_web_settings.plugin_path + 'css/editor-style.css'});
 });
