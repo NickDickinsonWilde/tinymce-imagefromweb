@@ -3,6 +3,8 @@ tinyMCE 4 Plugin: ImageFromWeb
 
 A plugin for tinyMCE 4.x
 
+This plugin lets you upload images to your server from another location on the internet (ie so you aren't abusing their bandwidth) and inserts it into your tinyMCE edit window.
+
 ## installation
 
 Create folder `imagefromweb` in `tinymce/plugins/` and unzip all files to that folder
@@ -24,8 +26,8 @@ tinymce.init({
     toolbar2: "save autosave | responsivefilemanager | print preview media | forecolor backcolor emoticons | code | youtube | qrcode | image_from_web",
     image_from_web: {
         upload_path: "/path to upload files to/", //relative to the plugin location. - if unset will default to "../../../../media/images/"
-		[other optional settings]		
-		},  
+		[other optional settings]
+		},
 	});
 </script>
 ```
@@ -35,10 +37,10 @@ Optional Settings:
     shortcut: STRING, [""],the keyboard shortcut code, for example: "CTRL+ALT+I"
 
     debug: BOOL, [false], if true may enable a couple of debug prints.
-    
+
     credit_show: BOOL, [true]
-    
-    credit_msg : STRING, ["<p>Repost from: %link%.</p>"], credit message to put after the image (with %link% replaced by the actual link to the original). OR BOOL false to disable. 
+
+    credit_msg : STRING, ["<p>Repost from: %link%.</p>"], credit message to put after the image (with %link% replaced by the actual link to the original). OR BOOL false to disable.
 
 ## Demo
 
