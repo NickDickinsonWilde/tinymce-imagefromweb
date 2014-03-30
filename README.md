@@ -71,13 +71,20 @@ design(at)briarmoon(dot)ca
 
 ##Changelog
 
+version 1.1.0 (20xx-xx-xx)
+
+*   All code run through JSLint
+*   Added automated building (Grunt)
+*   Minified CSS
+
+
 Version 1.0.0 (2013-11-21)
 
 *   Updated readme to be *much* better.
 *   Added option to automatically (or with user input) also provide a image credit line.
 *   Various tidyings and improvements.
 *   Fixed date output to use ISO standard.
-    
+
 Version 0.0.9-BETA (2013-11-20)
 
 *   First Beta. Everything *SHOULD* work.
