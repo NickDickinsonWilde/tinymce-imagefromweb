@@ -1,5 +1,5 @@
 {
-  "name": "TinyMCE - ImageFromWeb",
+  "name": "TinyMCE-ImageFromWeb",
   "version": "1.1.0",
   "description": "A plugin for tinyMCE 4.x \n This plugin lets you upload images to your server from another location on the internet (ie so you aren't abusing their bandwidth) and inserts it into your tinyMCE edit window.",
   "main": "plugin.js",
