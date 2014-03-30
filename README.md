@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb.svg)](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb)
 tinyMCE 4 Plugin: ImageFromWeb
 ==============================
 
