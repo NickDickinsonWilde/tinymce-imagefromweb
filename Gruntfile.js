@@ -125,15 +125,7 @@ module.exports = function (grunt) {
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-compress');
-    grunt.loadNpmTasks('grunt-csscomb');
-
+    require('load-grunt-tasks')(grunt);
     // Default task(s).
     grunt.registerTask('build_dev', ['clean:build_dev', 'csscomb', 'copy:build_dev', 'jshint', 'compress:build_dev']);
     grunt.registerTask('build_release', ['clean:build_release', 'csscomb', 'copy:build_release', 'jshint', 'uglify:build_release', 'cssmin:build_release', 'compress:build_release']);
