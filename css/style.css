@@ -1,6 +1,8 @@
-.container {
-	width: 95%;
+.container
+{
+    width: 95%;
 }
-#image {
-	cursor:pointer;
+#image
+{
+    cursor: pointer;
 }

@@ -1,1 +1,4 @@
-.mce-i-image_from_web {background-image:url(../icon.png)!important;}
+.mce-i-image_from_web
+{
+    background-image: url(../icon.png)!important;
+}
