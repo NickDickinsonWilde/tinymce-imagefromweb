@@ -122,7 +122,12 @@ module.exports = function (grunt) {
                 src: ['*.css'],
                 dest: 'css/'
             }
-        }
+        },
+        jsonlint: {
+            main: {
+                src: ['*.json']
+            }
+        },
     });
 
     require('load-grunt-tasks')(grunt);
