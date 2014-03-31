@@ -129,7 +129,7 @@ module.exports = function (grunt) {
             }
         },
     });
-
+    require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
     // Default task(s).
     grunt.registerTask('build_dev', ['clean:build_dev', 'csscomb', 'copy:build_dev', 'jshint', 'compress:build_dev']);
