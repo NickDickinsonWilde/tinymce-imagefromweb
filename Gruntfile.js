@@ -130,7 +130,7 @@ module.exports = function (grunt) {
                     report: 'gzip'
                 },
                 files: {
-                    '<%= grunt.option("outpath") %>/css/imagefromweb.css' : '<%= src_files_html %>',
+                    '<%= grunt.option("outpath") %>css/imagefromweb.css' : '<%= src_files_html %>',
                 }
             }
         },
