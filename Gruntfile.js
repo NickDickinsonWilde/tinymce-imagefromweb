@@ -133,6 +133,19 @@ module.exports = function (grunt) {
                     '<%= grunt.option("outpath") %>/css/imagefromweb.css' : '<%= src_files_html %>',
                 }
             }
+        },
+        processhtml: {
+            main : {
+                options: {
+                    strip: false
+                },
+                files: [{
+                    expand: true,
+                    cwd: '',
+                    src: '<%= src_files_html %>',
+                    dest: '<%= grunt.option("outpath") %>'
+                }]
+            }
         }
     });
     require('time-grunt')(grunt);
