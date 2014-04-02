@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb.svg)](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb)
+[![Build Status](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb.svg)](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb)[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 tinyMCE 4 Plugin: ImageFromWeb
 ==============================
 
