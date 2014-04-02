@@ -78,6 +78,11 @@ module.exports = function (grunt) {
                 src: ['*.json']
             }
         },
+        newer: {
+            options: {
+                cache: 'node_modules/grunt-newer/.cache/<%= grunt.option("outpath") %>'
+            }
+        }
     });
     require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
@@ -92,13 +97,13 @@ module.exports = function (grunt) {
         }
     });
     //Task Groups:
-    grunt.registerTask('prebuild', ['set_option:outpath:project', ':csscomb:main']);
-    grunt.registerTask('lint', ['set_option:outpath:project', ':jsonlint:main', ':jshint:main']);
+    grunt.registerTask('prebuild', ['set_option:outpath:project', 'newer:csscomb:main']);
+    grunt.registerTask('lint', ['set_option:outpath:project', 'newer:jsonlint:main', 'newer:jshint:main']);
     grunt.registerTask('lint-full', ['jsonlint:main', 'jshint:main']);
-    grunt.registerTask('build_dev', ['lint', 'prebuild',  'set_option:outpath:build/dev/', ':copy:main', 'compress:main']);
-    grunt.registerTask('build_release', ['lint', 'prebuild', 'set_option:outpath:build/release/', ':copy:main', ':uglify:main', ':cssmin:main', 'compress:main']);
-    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', ':uglify:main', ':copy:main', 'compress']);
+    grunt.registerTask('build_dev', ['lint', 'prebuild',  'set_option:outpath:build/dev/', 'newer:copy:main', 'compress:main']);
+    grunt.registerTask('build_release', ['lint', 'prebuild', 'set_option:outpath:build/release/', 'newer:copy:main', 'newer:uglify:main', 'newer:cssmin:main', 'compress:main']);
+    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', 'newer:uglify:main', 'newer:copy:main', 'compress']);
     //grunt.registerTask('default', ['build_dev', 'build_release']);
-    grunt.registerTask('default', ['lint', 'prebuild',  'set_option:outpath:build/dev/', ':copy:main', 'compress:main', 'set_option:outpath:build/release/', ':copy:main', ':uglify:main', ':cssmin:main']);
+    grunt.registerTask('default', ['lint', 'prebuild',  'set_option:outpath:build/dev/', 'newer:copy:main', 'compress:main', 'set_option:outpath:build/release/', 'newer:copy:main', 'newer:uglify:main', 'newer:cssmin:main']);
 
 };
