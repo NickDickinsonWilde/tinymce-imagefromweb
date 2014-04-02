@@ -78,6 +78,12 @@ module.exports = function (grunt) {
                 src: ['*.json']
             }
         },
+        notify_hooks: {
+            options: {
+                enabled: true,
+                title: "Project Name" // defaults to the name in package.json, or will use project directory's name
+            }
+        },
         newer: {
             options: {
                 cache: 'node_modules/grunt-newer/.cache/<%= grunt.option("outpath") %>'
