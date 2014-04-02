@@ -14,22 +14,14 @@ module.exports = function (grunt) {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            build_release: {
+            main: {
                 files: [{
                     expand: true,
                     cwd: '',
                     src: '<%= src_files_js %>',
-                    dest: '<%= dest_dir_rel %>'
+                    dest: '<%= grunt.option("outpath") %>'
                 }]
             },
-            build_dual: {
-                files: [{
-                    expand: true,
-                    cwd: '',
-                    src: '<%= src_files_js %>',
-                    dest: '<%= dest_dir_dual %>'
-                }]
-            }
         },
         jshint: {
             main: {
@@ -37,83 +29,41 @@ module.exports = function (grunt) {
             },
         },
         copy: {
-            build_release: {
-                src: ['<%= src_files_other %>'],
-                dest: '<%= dest_dir_rel %>',
+            main: {
+                expand: true,
+                cwd: '',
+                src: '<%= src_files_other %>',
+                dest: '<%= grunt.option("outpath") %>',
             },
-            build_dev: {
-                src: ['<%= src_files_js %>', '<%= src_files_css %>', '<%= src_files_other %>'],
-                dest: '<%= dest_dir_dev %>',
-            },
-            build_dual: {
-                src: ['<%= src_files_js %>', '<%= src_files_css %>', '<%= src_files_other %>'],
-                dest: '<%= dest_dir_dual %>',
-            }
         },
         cssmin: {
-            build_release: {
+            main: {
                 options : {
                     report: 'gzip'
                 },
                 expand: true,
                 cwd: 'css/',
                 src: ['*.css', '!*.min.css'],
-                dest: '<%= dest_dir_rel %>/css/',
+                dest: '<%= grunt.option("outpath") %>/css/',
                 ext: '.min.css'
             },
-            build_dual: {
-                options : {
-                    report: 'gzip'
-                },
-                expand: true,
-                cwd: 'css/',
-                src: ['*.css', '!*.min.css'],
-                dest: '<%= dest_dir_dual %>/css/',
-                ext: '.min.css'
-            }
         },
         clean: {
-            build_release: {
-                src: ['<%= dest_dir_rel %>*']
+            main: {
+                src: ['<%= grunt.option("outpath") %>*']
             },
-            build_dev: {
-                src: ['<%= dest_dir_dev %>*']
-            },
-            build_dual: {
-                src: ['<%= dest_dir_dual %>*']
-            }
         },
         compress: {
-            build_release: {
+            main: {
                 options: {
                     mode: 'zip',
                     archive: 'build/TinyMCE4-ImageFromWeb.<%= pkg.version %>.zip'
                 },
-                cwd: '<%= dest_dir_rel %>',
+                cwd: '<%= grunt.option("outpath") %>',
                 src: ['**/*'],
                 dest: 'TinyMCE4-ImageFromWeb/',
                 expand: true
             },
-            build_dev: {
-                options: {
-                    mode: 'zip',
-                    archive: 'build/TinyMCE4-ImageFromWeb.DEV.<%= pkg.version %>.zip'
-                },
-                cwd: '<%= dest_dir_dev %>',
-                src: ['**/*'],
-                dest: 'TinyMCE4-ImageFromWeb/',
-                expand: true
-            },
-            build_dual: {
-                options: {
-                    mode: 'zip',
-                    archive: 'build/TinyMCE4-ImageFromWeb.FULL.<%= pkg.version %>.zip'
-                },
-                cwd: '<%= dest_dir_dual %>',
-                src: ['**/*'],
-                dest: 'TinyMCE4-ImageFromWeb/',
-                expand: true
-            }
         },
         csscomb: {
             main: {
@@ -131,10 +81,24 @@ module.exports = function (grunt) {
     });
     require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
-    // Default task(s).
-    grunt.registerTask('build_dev', ['clean:build_dev', 'csscomb', 'copy:build_dev', 'jshint', 'compress:build_dev']);
-    grunt.registerTask('build_release', ['clean:build_release', 'csscomb', 'copy:build_release', 'jshint', 'uglify:build_release', 'cssmin:build_release', 'compress:build_release']);
-    grunt.registerTask('build_dual', ['clean:build_dual', 'csscomb', 'copy:build_dual', 'jshint', 'uglify:build_dual', 'cssmin:build_dual', 'compress:build_dual']);
-    grunt.registerTask('default', ['build_dev', 'build_release']);
+
+    //custom task:
+    grunt.registerTask('set_option', 'Set a global variable.', function (name, val) {
+        grunt.option(name, val);
+        if (name === 'outpath') {
+            grunt.log.writeln("Output folder is now: " + grunt.option('outpath'));
+        } else {
+            grunt.log.writeln("Global '" + name + "' is now: " + val);
+        }
+    });
+    //Task Groups:
+    grunt.registerTask('prebuild', ['set_option:outpath:project', ':csscomb:main']);
+    grunt.registerTask('lint', ['set_option:outpath:project', ':jsonlint:main', ':jshint:main']);
+    grunt.registerTask('lint-full', ['jsonlint:main', 'jshint:main']);
+    grunt.registerTask('build_dev', ['lint', 'prebuild',  'set_option:outpath:build/dev/', ':copy:main', 'compress:main']);
+    grunt.registerTask('build_release', ['lint', 'prebuild', 'set_option:outpath:build/release/', ':copy:main', ':uglify:main', ':cssmin:main', 'compress:main']);
+    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', ':uglify:main', ':copy:main', 'compress']);
+    //grunt.registerTask('default', ['build_dev', 'build_release']);
+    grunt.registerTask('default', ['lint', 'prebuild',  'set_option:outpath:build/dev/', ':copy:main', 'compress:main', 'set_option:outpath:build/release/', ':copy:main', ':uglify:main', ':cssmin:main']);
 
 };
