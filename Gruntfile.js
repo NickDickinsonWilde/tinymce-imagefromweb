@@ -111,8 +111,8 @@ module.exports = function (grunt) {
                     removeEmptyAttributes: true,
                 },
                 expand: true,
-                cwd: '',
-                src: '<%= src_files_html %>',
+                cwd: '<%= grunt.option("outpath") %>',
+                src: '**/*.html',
                 dest: '<%= grunt.option("outpath") %>',
             }
         },
