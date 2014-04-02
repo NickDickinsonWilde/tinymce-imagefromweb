@@ -43,11 +43,21 @@ module.exports = function (grunt) {
                 options : {
                     report: 'gzip'
                 },
-                expand: true,
-                cwd: 'css/',
-                src: ['*.css', '!*.min.css'],
-                dest: '<%= grunt.option("outpath") %>/css/',
-                ext: '.min.css'
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= grunt.option("outpath") %>/css',
+                        src: ['*.css', '!*.min.css'],
+                        dest: '<%= grunt.option("outpath") %>/css/',
+                        ext: '.min.css'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'css',
+                        src: ['*.css', '!*.min.css'],
+                        dest: '<%= grunt.option("outpath") %>/css/',
+                        ext: '.min.css'
+                    }]
             },
         },
         clean: {
