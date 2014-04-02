@@ -161,14 +161,14 @@ module.exports = function (grunt) {
         }
     });
     //Task Groups:
-    grunt.registerTask('prebuild', ['set_option:outpath:project', 'newer:csscomb:main']);
-    grunt.registerTask('lint', ['set_option:outpath:project', 'newer:jsonlint:main', 'newer:jshint:main']);
-    grunt.registerTask('lint-full', ['set_option:outpath:project', 'jsonlint:main', 'jshint:main']);
-    grunt.registerTask('dev', ['set_option:outpath:build/dev/', 'newer:copy:main', 'newer:processhtml:main', 'newer:htmlmin:main', 'newer:imagemin:main', 'compress:main']);
+    grunt.registerTask('prebuild', ['set_option:outpath:', 'newer:uncss:main', 'newer:csscomb:main']);
+    grunt.registerTask('lint', ['set_option:outpath:', 'newer:jsonlint:main', 'newer:jshint:main']);
+    grunt.registerTask('lint-full', ['set_option:outpath:', 'jsonlint:main', 'jshint:main']);
+    grunt.registerTask('dev', ['set_option:outpath:build/dev/', 'newer:copy:main', 'compress:main']);
     grunt.registerTask('release', ['set_option:outpath:build/release/', 'newer:copy:main', 'newer:processhtml:main', 'newer:htmlmin:main', 'newer:imagemin:main', 'newer:uglify:main', 'newer:cssmin:main', 'compress:main']);
     grunt.registerTask('build_dev', ['lint', 'prebuild',  'dev']);
     grunt.registerTask('build_release', ['lint', 'prebuild', 'release']);
-    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', 'newer:uncss:main', 'newer:uglify:main', 'newer:cssmin:main', 'newer:imagemin:main', 'newer:htmlmin:main', 'newer:copy:main', 'compress']);
+    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', 'newer:uglify:main', 'newer:cssmin:main', 'newer:imagemin:main', 'newer:htmlmin:main', 'newer:copy:main', 'compress']);
     grunt.registerTask('default', ['lint', 'prebuild',  'dev', 'release']);
     //cleanup tasks:
     grunt.registerTask('clean_full', ['set_option:outpath:build/', 'clean']);
