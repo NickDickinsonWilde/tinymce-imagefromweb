@@ -37,5 +37,6 @@
     "grunt-jsonlint": "~1.0.4",
     "grunt-contrib-imagemin": "~0.6.1",
     "grunt-contrib-htmlmin": "~0.2.0",
+    "grunt-uncss": "~0.3.2",
   }
 }

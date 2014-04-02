@@ -123,6 +123,16 @@ module.exports = function (grunt) {
                 src: '<%= src_files_images %>',
                 dest: '<%= grunt.option("outpath") %>'
             }
+        },
+        uncss: {
+            main: {
+                options: {
+                    report: 'gzip'
+                },
+                files: {
+                    '<%= grunt.option("outpath") %>/css/imagefromweb.css' : '<%= src_files_html %>',
+                }
+            }
         }
     });
     require('time-grunt')(grunt);
