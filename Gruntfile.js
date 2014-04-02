@@ -170,5 +170,10 @@ module.exports = function (grunt) {
     grunt.registerTask('build_release', ['lint', 'prebuild', 'release']);
     grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', 'newer:uncss:main', 'newer:uglify:main', 'newer:cssmin:main', 'newer:imagemin:main', 'newer:htmlmin:main', 'newer:copy:main', 'compress']);
     grunt.registerTask('default', ['lint', 'prebuild',  'dev', 'release']);
+    //cleanup tasks:
+    grunt.registerTask('clean_full', ['set_option:outpath:build/', 'clean']);
+    grunt.registerTask('clean_dev', ['set_option:outpath:build/dev/', 'clean']);
+    grunt.registerTask('clean_dual', ['set_option:outpath:build/dual/', 'clean']);
+    grunt.registerTask('clean_release', ['set_option:outpath:build/release/', 'clean']);
 
 };
