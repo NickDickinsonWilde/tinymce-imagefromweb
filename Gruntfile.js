@@ -32,6 +32,12 @@ module.exports = function (grunt) {
                 src: '<%= src_files_other %>',
                 dest: '<%= grunt.option("outpath") %>',
             },
+            dev: {
+                expand: true,
+                cwd: '',
+                src: [['<%= src_files_js %>'], ['<%= src_files_css %>'], ['<%= src_files_html %>'], ['<%= src_files_images %>']],
+                dest: '<%= grunt.option("outpath") %>'
+            }
         },
         cssmin: {
             main: {
