@@ -9,13 +9,7 @@ module.exports = function (grunt) {
         src_files_html: ['*.html'],
         src_files_images: ['icon.png'],
         src_files_other: ['license.txt', 'README.md', 'functions.php'],
-        dest_dir_dev: 'build/dev/',
-        dest_dir_rel: 'build/release/',
-        dest_dir_dual: 'build/dual/',
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
             main: {
                 files: [{
                     expand: true,
