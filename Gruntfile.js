@@ -15,7 +15,8 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '',
                     src: '<%= src_files_js %>',
-                    dest: '<%= grunt.option("outpath") %>'
+                    dest: '<%= grunt.option("outpath") %>',
+                    ext: '.min.js'
                 }]
             },
         },
