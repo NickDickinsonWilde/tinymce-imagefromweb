@@ -57,7 +57,7 @@ module.exports = function (grunt) {
             main: {
                 options: {
                     mode: 'zip',
-                    archive: 'build/TinyMCE4-ImageFromWeb.<%= pkg.version %>.zip'
+                    archive: 'build/TinyMCE4-ImageFromWeb.<%= pkg.version %>.<%= grunt.option("archive") %>.zip'
                 },
                 cwd: '<%= grunt.option("outpath") %>',
                 src: ['**/*'],
@@ -153,11 +153,11 @@ module.exports = function (grunt) {
     grunt.registerTask('lint', ['set_option:outpath:', 'newer:jsonlint:main', 'newer:jshint:main']);
     grunt.registerTask('lint_full', ['set_option:outpath:', 'jsonlint:main', 'jshint:main']);
     grunt.registerTask('minify', ['newer:htmlmin:main', 'newer:imagemin:main', 'newer:uglify:main', 'newer:cssmin:main']);
-    grunt.registerTask('dev', ['set_option:outpath:build/dev/', 'newer:copy:main', 'compress:main']);
-    grunt.registerTask('release', ['set_option:outpath:build/release/', 'newer:copy:main', 'newer:processhtml:main', 'minify', 'compress:main']);
+    grunt.registerTask('dev', ['set_option:outpath:build/dev/', 'newer:copy', 'set_option:archive:DEV', 'compress:main']);
+    grunt.registerTask('release', ['set_option:outpath:build/release/', 'newer:copy:main', 'newer:processhtml:main', 'minify', 'set_option:archive:RELEASE', 'compress:main']);
     grunt.registerTask('build_dev', ['lint', 'prebuild',  'dev']);
     grunt.registerTask('build_release', ['lint', 'prebuild', 'release']);
-    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', 'newer:copy:main', 'newer:processhtml:main', 'minify', 'compress:main']);
+    grunt.registerTask('build_dual', ['lint', 'prebuild',  'set_option:outpath:build/dual/', 'newer:copy', 'newer:processhtml:main', 'minify', 'set_option:archive:FULL', 'compress:main']);
     grunt.registerTask('default', ['lint', 'prebuild',  'dev', 'release']);
     //cleanup tasks:
     grunt.registerTask('clean_full', ['set_option:outpath:build/', 'clean']);
