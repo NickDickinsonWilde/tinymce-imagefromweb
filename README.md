@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb.svg)](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb)[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Build Status](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb.svg)](https://travis-ci.org/PacificMorrowind/tinymce-imagefromweb) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 tinyMCE 4 Plugin: ImageFromWeb
 ==============================
 
@@ -8,7 +8,7 @@ This plugin lets you upload images to your server from another location on the i
 
 ## installation
 
-Create folder `imagefromweb` in `tinymce/plugins/` and unzip all files to that folder
+Create folder `imagefromweb` in `tinymce/plugins/` and unzip all files to that folder.
 
 Then add it to your tinyMCE initialization script. For example:
 
@@ -43,6 +43,19 @@ Optional Settings:
 
     credit_msg : STRING, ["<p>Repost from: %link%.</p>"], credit message to put after the image (with %link% replaced by the actual link to the original). OR BOOL false to disable.
 
+## Building
+
+It is set up with a a [Grunt](http://gruntjs.com) buildfile so all you have to do is install [Node.js](http://nodejs.org) and then run (from a command prompt cd'ed to the project's location).
+
+```
+npm install -g grunt-cli
+npm install
+grunt
+```
+
+More build options are listed in `gruntfile.js`.
+
+
 ## Demo
 
 Coming Soon!
@@ -72,11 +85,15 @@ design(at)briarmoon(dot)ca
 
 ##Changelog
 
-version 1.1.0 (20xx-xx-xx)
+version 1.1.0 (2014-04-02)
 
 *   All code run through JSLint
 *   Added automated building (Grunt)
-*   Minified CSS
+*   Releases now have:
+    *   Minified CSS
+    *   All unused selectors have been removed from css files (including bootstrap).
+    *   Images minified
+    *   HTML minified
 
 
 Version 1.0.0 (2013-11-21)
