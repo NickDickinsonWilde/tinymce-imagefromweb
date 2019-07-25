@@ -58,7 +58,7 @@ More build options are listed in `gruntfile.js`.
 
 ## Demo
 
-Coming Soon!
+Coming Soon! (NOT)
 
 ## Commercial use
 
